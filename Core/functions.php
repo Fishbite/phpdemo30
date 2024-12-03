@@ -29,7 +29,11 @@ function base_path($path)
 
 function view($path, $attributes = [])
 {
+// takes an array and turns it into a set of variables
+// where `key` = var name and `value`= value of the var
     extract($attributes);
+
+    // var_dump($heading);
 
     require base_path('views/' . $path);
 }
