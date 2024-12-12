@@ -10,6 +10,7 @@
 */
 const BASE_PATH = __DIR__.'/../';
 
+// echo 'Arse<br>';
 // var_dump(BASE_PATH); // "C:\xampp\htdocs\phpdemo30\public/../"
 
 require BASE_PATH.'Core/functions.php';
@@ -22,5 +23,3 @@ spl_autoload_register(function ($class) {
 
 // appends BASE_PATH to the given path
 require base_path('Core/router.php');
-
-

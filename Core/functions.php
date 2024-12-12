@@ -24,7 +24,7 @@ function authorize($condition, $status = Response::FORBIDDEN)
 function base_path($path)
 {
     // append BASE_PATH so we don't have to remember what the path is
-    return BASE_PATH . $path;
+    return BASE_PATH . $path; // const BASE_PATH = __DIR__.'/../'
 }
 
 function view($path, $attributes = [])
