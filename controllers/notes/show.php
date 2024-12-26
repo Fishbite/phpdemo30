@@ -4,6 +4,7 @@ $config = require base_path('config.php');
 $db = new Database($config['database']);
 
 $currentUserId = 1;
+// dd($_GET);
 
 $note = $db->query('select * from notes where id = :id', [
     'id' => $_GET['id']
