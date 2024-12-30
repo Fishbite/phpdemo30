@@ -18,7 +18,17 @@ require BASE_PATH.'Core/functions.php';
 // php calls this function automatically when a class is required
 spl_autoload_register(function ($class) {
 
-    require base_path("Core/" . $class . '.php');
+    // Core\Database - need to replace `\` with `/`
+
+    // Note: need to escape the searched for `\` with a `\`
+    // use the DIRECTORY_SEPARATOR constant so that it works
+    // across multipple OS's
+
+    $class = str_replace('\\', '/', $class);
+
+    // dd($class);
+
+    require base_path("{$class}.php");
 });
 
 // appends BASE_PATH to the given path

@@ -1,5 +1,10 @@
 <?php
 
+// import  the Database class from the `Core` namespace so that
+// we don't have to write new Core\Database() 
+// We can now reference the class just by its name `Database()`
+use Core\Database;
+
 $config = require base_path('config.php');
 
 // this line triggers the `spl_autoload_register` function that loads the class when required
