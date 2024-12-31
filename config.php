@@ -9,7 +9,7 @@ return [
     ],
 
     'livedb' => [
-        'host' => 'sql312.infinityfree.com ',
+        'host' => 'sql312.infinityfree.com',
         'port' => 3306,
         'dbname' => 'if0_37835477_mini_project',
         'charset' => 'utf8mb4',
