@@ -21,10 +21,10 @@ spl_autoload_register(function ($class) {
     // Core\Database - need to replace `\` with `/`
 
     // Note: need to escape the searched for `\` with a `\`
-    // use the DIRECTORY_SEPARATOR constant so that it works
+    // use the DIRECTORY_SEPARATOR constant as the `replace`parameter so that it works
     // across multipple OS's
 
-    $class = str_replace('\\', '/', $class);
+    $class = str_replace(search: '\\', replace: DIRECTORY_SEPARATOR, subject: $class);
 
     // dd($class);
 
