@@ -36,6 +36,8 @@ spl_autoload_register(function ($class) {
 // appends BASE_PATH to the given path
 // require base_path('Core/router.php');
 
+require base_path('bootstrap.php');
+
 #### refactor
 $router = new \Core\Router();
 
