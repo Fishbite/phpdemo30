@@ -51,10 +51,10 @@ $user = $db->query('SELECT * FROM users WHERE email = :email', [
         // if no, save account to the DB, log the user in and redirect user
         $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
             'email' => $email,
-            'password' => $password
+            'password' => password_hash($password, PASSWORD_BCRYPT)
         ]);
 
-        // mark that the user has logged in
+        // mark that the user has been registered
         $_SESSION['user'] = [
             'email' => $email
         ];
