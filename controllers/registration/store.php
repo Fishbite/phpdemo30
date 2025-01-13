@@ -54,10 +54,11 @@ $user = $db->query('SELECT * FROM users WHERE email = :email', [
             'password' => password_hash($password, PASSWORD_BCRYPT)
         ]);
 
-        // mark that the user has been registered
-        $_SESSION['user'] = [
-            'email' => $email
-        ];
+
+        login([
+
+            'email' =>$email
+        ]);
 
         // redirect them to somewhere - homepage for now!
         header('location: /');
