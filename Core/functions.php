@@ -66,7 +66,7 @@ function logout() {
     $_SESSION = []; // clear out the current session data
     session_destroy(); // kill the session data on the server
 
-        $params = session_get_cookie_params();
+    $params = session_get_cookie_params();
     // to delete the cookie, set the expiriation time in the past `time() - 3600`
     setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
 
