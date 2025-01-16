@@ -1,5 +1,7 @@
 <?php
 
+##### used to validate form inputs #####
+
 namespace Http\Forms;
 use Core\Validator;
 
