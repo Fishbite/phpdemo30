@@ -4,6 +4,8 @@ use Core\App;
 use Core\Database;
 use Core\Validator;
 
+// dd('register the user');
+
 // set up the DB connection
 $db = App::resolve(Database::class);
 
@@ -13,10 +15,10 @@ $password = $_POST['password'];
 
 // validate the form inputs
 $errors = [];
-if (!Validator::email($email)) {
 
-    $errors['email'] = 'Please provide a valid email address';
-}
+if (!Validator::email($email)) {
+    $errors['email'] = 'Please provide a valid email address.';
+ }
 
 if (!Validator::string($password, 8, 255)) {
 
