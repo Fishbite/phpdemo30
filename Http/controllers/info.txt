@@ -1,0 +1,3 @@
+the Controllers gather all the information that is needed to
+to be handed over to the Views, which are responsible for
+displaying the data on the interface

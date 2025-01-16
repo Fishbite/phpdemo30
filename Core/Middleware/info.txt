@@ -1,0 +1,6 @@
+the Middleware directory holds code that forms a bridge between
+our Router and the application. It maps the appropriate Class
+that will take charge of the actions to be taken depending upon 
+parameters that are handed to it:
+
+i.e. url -> endpoint -> (middleware param) -> class to call

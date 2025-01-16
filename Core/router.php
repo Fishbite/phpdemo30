@@ -103,9 +103,10 @@ class Router {
                 //     (new Auth)->handle();
                 // }
 
+                // dd(base_path('Http/controllers/' . $route['controller']));
 
                 // require the corresponding controller
-                return require base_path($route['controller']);
+                return require base_path('Http/controllers/' . $route['controller']);
             }
         }
 

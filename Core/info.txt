@@ -1,0 +1,4 @@
+the Core directory contains our application infrastructure code.
+
+this is code that is not necessarily unique to this app, but,
+code that could be used across many applications.
