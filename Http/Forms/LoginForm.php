@@ -3,44 +3,63 @@
 ##### used to validate form inputs #####
 
 namespace Http\Forms;
+
+use Core\ValidationException;
 use Core\Validator;
 
-class LoginForm {
+class LoginForm
+{
 
     // we'll use a getter function to access this externally
-    protected $errors;
+    protected $errors = [];
 
-    public function validate($email, $password){
 
+    public function __construct(public array $attributes)
+    {
         // validate the form inputs
 
-        if (!Validator::email($email)) {
+        if (!Validator::email($attributes['email'])) {
 
             $this->errors['email'] = 'Please provide a valid email address';
         }
 
-        if (!Validator::string($password)) {
+        if (!Validator::string($attributes['password'])) {
 
             $this->errors['password'] = 'Please provide a valid password';
         }
+    }
 
-        // the validation class should not be responsible for returning a view
-        // if ( !empty($errors)) {
+    public static function validate($attributes)
+    {
+        $instance = new static($attributes);
+        return $instance->failed() ? $instance->throw() : $instance;
+    }
 
-        //     return view('session/create.view.php', [
+    public function throw()
+    {
+        ValidationException::throw($this->errors(), $this->attributes);
+    }
 
-        //         'errors' => $errors
-        //     ]);
-        // }
-
-        // So, just return whether the form passed validation or not
-        return empty($this->errors); // true or false
+    public function failed()
+    {
+        
+        // return a boolean that indicates whether the form validation failed
+        return count($this->errors);
     }
 
     // getter function to 'get' the $errors array
-    public function errors(){
+    public function errors()
+    {
 
         return $this->errors;
+    }
+
+    public function error($field, $message)
+    {
+
+        $this->errors[$field] = $message;
+
+        return $this;
     }
 
 }

@@ -38,8 +38,8 @@ function base_path($path)
 
 function view($path, $attributes = [])
 {
-// takes an array and turns it into a set of variables
-// where `key` = var name and `value`= value of the var
+    // takes an array and turns it into a set of variables
+    // where `key` = var name and `value`= value of the var
     extract($attributes);
 
     // var_dump($heading);
@@ -47,27 +47,17 @@ function view($path, $attributes = [])
     require base_path('views/' . $path);
 }
 
-function login($user){
 
-    // mark that the user has been registered
-    $_SESSION['user'] = [
-
-        'email' => $user['email']
-    ];
-
-    // create a  new session id, for security purposes
-    session_regenerate_id(true);
-
+function redirect($path)
+{
+    header("location: {$path}");
+    exit();
 }
 
-function logout() {
+// reuturn old form data i.e. that which the user has entered
+// this is useful when you want to re-populate a form
+function old($key, $default = '')
+{
 
-    // log the user out
-    $_SESSION = []; // clear out the current session data
-    session_destroy(); // kill the session data on the server
-
-    $params = session_get_cookie_params();
-    // to delete the cookie, set the expiriation time in the past `time() - 3600`
-    setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
-
+    return Core\Session::get('old')[$key] ?? $default;
 }

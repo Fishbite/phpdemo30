@@ -1,7 +1,8 @@
 <?php
 
+use Core\Authenticator;
 
-logout();
+(new Authenticator)->logout();
 
 #### the code below has been wrapped in the function `logout()`
 // // log the user out

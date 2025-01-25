@@ -1,6 +1,7 @@
 <?php
 
 use Core\App;
+use Core\Authenticator;
 use Core\Database;
 use Core\Validator;
 
@@ -18,7 +19,7 @@ $errors = [];
 
 if (!Validator::email($email)) {
     $errors['email'] = 'Please provide a valid email address.';
- }
+}
 
 if (!Validator::string($password, 8, 255)) {
 
@@ -30,7 +31,6 @@ if (!empty($errors)) {
     return view('registration/create.view.php', [
         'errors' => $errors
     ]);
-
 }
 
 // check if the account already exists
@@ -39,30 +39,29 @@ $user = $db->query('SELECT * FROM users WHERE email = :email', [
     'email' => $email
 ])->find();
 
-    // if yes, redirect to login page
-    if ($user) {
+// if yes, redirect to login page
+if ($user) {
 
-        // an account with that email address already exists
-        // so, redirect user to login page (or home page as the login page doesn't exist yet)
-        header('location: /');
-        
-        exit();
+    // an account with that email address already exists
+    // so, redirect user to login page (or home page as the login page doesn't exist yet)
+    header('location: /');
 
-    } else {
+    exit();
+} else {
 
-        // if no, save account to the DB, log the user in and redirect user
-        $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
-            'email' => $email,
-            'password' => password_hash($password, PASSWORD_BCRYPT)
-        ]);
+    // if no, save account to the DB, log the user in and redirect user
+    $db->query('INSERT INTO users(email, password) VALUES(:email, :password)', [
+        'email' => $email,
+        'password' => password_hash($password, PASSWORD_BCRYPT)
+    ]);
 
 
-        login([
+    (new Authenticator)->login([
 
-            'email' =>$email
-        ]);
+        'email' => $email
+    ]);
 
-        // redirect them to somewhere - homepage for now!
-        header('location: /');
-        exit();
-    }
+    // redirect them to somewhere - homepage for now!
+    header('location: /');
+    exit();
+}
