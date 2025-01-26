@@ -1,0 +1,16 @@
+{
+  "name": "owner/phpdemo30",
+  "authors": [
+    {
+      "name": "Fishbite",
+      "email": "43952420+Fishbite@users.noreply.github.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Core\\": "Core/",
+      "Http\\": "Http/"
+    }
+  }
+}
