@@ -54,7 +54,7 @@ function redirect($path)
     exit();
 }
 
-// reuturn old form data i.e. that which the user has entered
+// return old form data i.e. that which the user has entered
 // this is useful when you want to re-populate a form
 function old($key, $default = '')
 {

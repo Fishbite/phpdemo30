@@ -6,11 +6,21 @@
       "email": "43952420+Fishbite@users.noreply.github.com"
     }
   ],
-  "require": {},
+  "require": {
+    "illuminate/collections": "^11.40"
+  },
   "autoload": {
     "psr-4": {
       "Core\\": "Core/",
       "Http\\": "Http/"
+    }
+  },
+  "require-dev": {
+    "pestphp/pest": "^3.7"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
     }
   }
 }
